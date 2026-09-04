@@ -28,10 +28,21 @@ case "$(uname -m)" in
 esac
 [ "$(id -u)" = "0" ] || die "run as root: curl -fsSL $BASE/install.sh | sudo sh"
 
+# Show the downloader's own progress bar when stderr is a terminal — which it
+# still is under `curl ... | sudo sh` — and stay silent into logs and CI.
+# wget's --show-progress is GNU-only, hence the probe before trusting it.
 if command -v curl >/dev/null 2>&1; then
-  fetch() { curl -fsSL "$1" -o "$2"; }
+  if [ -t 2 ]; then
+    fetch() { curl -fL --progress-bar "$1" -o "$2"; }
+  else
+    fetch() { curl -fsSL "$1" -o "$2"; }
+  fi
 elif command -v wget >/dev/null 2>&1; then
-  fetch() { wget -qO "$2" "$1"; }
+  if [ -t 2 ] && wget --help 2>&1 | grep -q -- --show-progress; then
+    fetch() { wget -q --show-progress -O "$2" "$1"; }
+  else
+    fetch() { wget -qO "$2" "$1"; }
+  fi
 else
   die "need curl or wget"
 fi
@@ -78,12 +89,18 @@ Next, deploy the platform. On a public server with a domain:
 
   sudo athinex installer install --mode domain --host athinex.example.com
 
-On a private network, reachable by IP only:
+On a private network without public DNS or inbound internet, over HTTPS
+(the host still needs outbound package and Docker-registry access):
 
-  sudo athinex installer install --mode ip --host 10.0.0.5 --i-understand-no-tls
+  sudo athinex installer install --mode ip --host 10.0.0.5 --tls selfsigned
 
 You will be asked for your license key, client id, registry token and the first
 admin account. Full documentation:
 
   https://github.com/athinexAI/athinex-installer
+
+After deployment, inspect or renew TLS with:
+
+  sudo athinex installer ssl status
+  sudo athinex installer ssl renew
 EOF
