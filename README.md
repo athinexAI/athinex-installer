@@ -7,8 +7,8 @@ proves the result actually works.
 
 | | |
 |---|---|
-| **Version** | `v2.0.0` |
-| **Built** | `2026-09-04T11:30:13Z` from `f6a642b` |
+| **Version** | `68d1d83-dirty` |
+| **Built** | `2026-09-07T22:50:39Z` from `68d1d83` |
 | **Platform** | linux/amd64 |
 | **Download** | [`athinex-linux-amd64.gz`](athinex-linux-amd64.gz) (12.8 MB, 38.4 MB unpacked) |
 
@@ -35,8 +35,8 @@ sudo install -m 0755 athinex-linux-amd64 /usr/local/bin/athinex
 Checksums for this release:
 
 ```
-30802c9021ea796cb91936a40302ba5ff0e2ac36f4e0b174f0624c73d468d7cf  athinex-linux-amd64.gz
-43efcd3db9e24f3d370e85978e78fc51b326ff22492cb08a1b04f0ad1f184b3b  athinex-linux-amd64
+e26e56b313bbb40832eba45e47e8468dac6adea1a68c9010016bfb56b67a2da6  athinex-linux-amd64.gz
+28d7cfdd7663a01f004f36f022c817bf81f421cf80ff9c84b6f453a53f0e1eb1  athinex-linux-amd64
 ```
 
 </details>
@@ -44,15 +44,26 @@ Checksums for this release:
 ## Before you deploy
 
 - **OS** — Ubuntu or Debian, linux/amd64.
-- **Size** — 4 vCPU / 16 GB RAM (32 GB recommended) / 60 GB disk. Add ~4 GB RAM
+- **Size** — 4 vCPU / 6 GB RAM (32 GB recommended) / 60 GB disk. Add ~4 GB RAM
   and 15 GB disk for the deep assessment add-on, ~500 MB disk for monitoring.
 - **Network** — outbound access to apt package repositories and the Docker
   registry is required for install and update. Ports 80 and 443 must be free wherever there is a certificate; ports
   3000 and 8000 for a deployment with no TLS. Only a Let's Encrypt certificate
   additionally needs 80/443 reachable *from the internet*, with the domain's `A`
   record already pointing at this host.
-- **Credentials** — your Athinex license key, client id, and a registry token
-  for the private images. Docker itself is installed for you if missing.
+- **Credentials** — your Athinex license key and client id. The installer verifies
+  them online and fetches the registry token for the private images. Docker
+  itself is installed for you if missing.
+
+When run directly as root, the installer creates an `athinex` account with sudo
+membership, a home directory, and a generated password shown once during setup.
+When invoked through sudo, it uses `$SUDO_USER`; `--user` selects an existing
+non-root account. Account creation happens after license verification and plan
+confirmation, and never during a dry-run.
+
+Installation requires a successfully verified, valid, active license. Invalid
+credentials, expired or inactive licenses, and an unreachable license service
+stop installation. There is no `--skip-license-check` bypass.
 
 ## Deploy
 
