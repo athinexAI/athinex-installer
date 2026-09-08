@@ -7,8 +7,8 @@ proves the result actually works.
 
 | | |
 |---|---|
-| **Version** | `68d1d83-dirty` |
-| **Built** | `2026-09-07T22:50:39Z` from `68d1d83` |
+| **Version** | `76349da-dirty` |
+| **Built** | `2026-09-08T00:03:36Z` from `76349da` |
 | **Platform** | linux/amd64 |
 | **Download** | [`athinex-linux-amd64.gz`](athinex-linux-amd64.gz) (12.8 MB, 38.4 MB unpacked) |
 
@@ -35,8 +35,8 @@ sudo install -m 0755 athinex-linux-amd64 /usr/local/bin/athinex
 Checksums for this release:
 
 ```
-e26e56b313bbb40832eba45e47e8468dac6adea1a68c9010016bfb56b67a2da6  athinex-linux-amd64.gz
-28d7cfdd7663a01f004f36f022c817bf81f421cf80ff9c84b6f453a53f0e1eb1  athinex-linux-amd64
+6acf9e14582bf003f4da7cb50b8416f0683fc7621e564346a1aa5032f1e7ddb1  athinex-linux-amd64.gz
+2624350f3be1df0865cc22f01131a28fef582d3db5ca3b919f5158f0be3ce95b  athinex-linux-amd64
 ```
 
 </details>
@@ -140,9 +140,12 @@ re-running after an interruption resumes rather than starting over.
 
 ```sh
 sudo athinex installer install --mode domain --host athinex.example.com \
-  --with-gvm \        # deep network and host assessment (needs ~4 GB RAM, 15 GB disk)
-  --with-monitoring   # metrics and dashboards
+  --with-assessment \
+  --with-monitoring
 ```
+
+The assessment add-on provides deep network and host checks and needs about
+4 GB extra RAM and 15 GB disk. Monitoring adds metrics and dashboards.
 
 ### Unattended install
 
