@@ -7,10 +7,10 @@ proves the result actually works.
 
 | | |
 |---|---|
-| **Version** | `5ef84bf-dirty` |
-| **Built** | `2026-09-08T00:08:32Z` from `5ef84bf` |
+| **Version** | `66bc891` |
+| **Built** | `2026-09-09T10:30:50Z` from `66bc891` |
 | **Platform** | linux/amd64 |
-| **Download** | [`athinex-linux-amd64.gz`](athinex-linux-amd64.gz) (12.8 MB, 38.4 MB unpacked) |
+| **Download** | [`athinex-linux-amd64.gz`](athinex-linux-amd64.gz) (12.9 MB, 38.4 MB unpacked) |
 
 ## Install
 
@@ -35,8 +35,8 @@ sudo install -m 0755 athinex-linux-amd64 /usr/local/bin/athinex
 Checksums for this release:
 
 ```
-73bc4089ebc9552066933556994019e4d73f9080c63c98e2c6438b21ec552dab  athinex-linux-amd64.gz
-3baa21cbd5db76c3fd91f5d71e015c3881e5c126db80e9679c1b21fc9019f48c  athinex-linux-amd64
+e2c74b230334ea05de4e80bc67a6bd3fd29b0c37438cd78db14218e2ce9a3feb  athinex-linux-amd64.gz
+b33229784c6f4db96501cfd0cfe81e868e798c516301ac2f3af039600fda5862  athinex-linux-amd64
 ```
 
 </details>
@@ -182,6 +182,14 @@ athinex installer maintenance              # print the maintenance units to add
 `update` compares the rendered configuration against what it last wrote, and the
 local images against what it last deployed, then restarts only what those
 changes require.
+
+If an update fails or is interrupted, re-run the same command (including options
+such as `--keep-edits`). Unfinished actions are retried automatically, and the
+update is only complete after configuration and health checks succeed. Even an
+update with no changes checks health before reporting that it is up to date.
+To reapply services and extract the host binary after a failure from an older
+installer that did not record unfinished actions, run
+`sudo athinex installer update --keep-edits --restart-all`.
 
 ### SSL lifecycle
 
