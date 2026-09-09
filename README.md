@@ -7,8 +7,8 @@ proves the result actually works.
 
 | | |
 |---|---|
-| **Version** | `07be713` |
-| **Built** | `2026-09-09T11:16:41Z` from `07be713` |
+| **Version** | `12db777` |
+| **Built** | `2026-09-09T11:52:20Z` from `12db777` |
 | **Platform** | linux/amd64 |
 | **Download** | [`athinex-linux-amd64.gz`](athinex-linux-amd64.gz) (12.9 MB, 38.5 MB unpacked) |
 
@@ -35,8 +35,8 @@ sudo install -m 0755 athinex-linux-amd64 /usr/local/bin/athinex
 Checksums for this release:
 
 ```
-3eb9f76c066e89f023aa61fe38d544ac763d273fd5baceabfd420a9490b34458  athinex-linux-amd64.gz
-4e3aa6727b9c259029009a904f407e8dfc279a3aa151264b41cfed47416a06c6  athinex-linux-amd64
+c58d0a26ac5e8b7f3f7fa1d6209a635219a063c539576676eb19d47440ada4af  athinex-linux-amd64.gz
+6be8cc21eb9f71741ef3b015ecf190b825d259222dea887e05a8d27b70de7e08  athinex-linux-amd64
 ```
 
 </details>
@@ -55,11 +55,13 @@ Checksums for this release:
   them online and fetches the registry token for the private images. Docker
   itself is installed for you if missing.
 
-When run directly as root, the installer creates an `athinex` account with sudo
-membership, a home directory, and a generated password shown once during setup.
-When invoked through sudo, it uses `$SUDO_USER`; `--user` selects an existing
-non-root account. Account creation happens after license verification and plan
-confirmation, and never during a dry-run.
+Installation must be launched through sudo from a non-root account. When first
+run directly from a root login, the installer creates an `athinex` account with
+sudo membership, a home directory, and a generated password shown once, then
+stops before deploying anything. Run `su - athinex` and repeat the install with
+`sudo`; `$SUDO_USER` then provides the identity used for Docker credentials and
+file ownership. `--user` selects an existing non-root account. A dry-run reports
+the required account creation without changing the host.
 
 Installation requires a successfully verified, valid, active license. Invalid
 credentials, expired or inactive licenses, and an unreachable license service

@@ -85,6 +85,11 @@ cat <<EOF
 
 Installed athinex $VERSION to $DEST
 
+If this is a direct root login, prepare the required sudo operator first:
+
+  athinex installer install
+  su - athinex
+
 Next, deploy the platform. On a public server with a domain:
 
   sudo athinex installer install --mode domain --host athinex.example.com

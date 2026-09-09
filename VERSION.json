@@ -1,13 +1,13 @@
 {
-  "version": "07be713",
-  "commit": "07be713",
-  "built_at": "2026-09-09T11:16:41Z",
+  "version": "12db777",
+  "commit": "12db777",
+  "built_at": "2026-09-09T11:52:20Z",
   "go_version": "go1.25.7",
   "os": "linux",
   "arch": "amd64",
   "asset": "athinex-linux-amd64.gz",
-  "sha256_gz": "3eb9f76c066e89f023aa61fe38d544ac763d273fd5baceabfd420a9490b34458",
-  "sha256_bin": "4e3aa6727b9c259029009a904f407e8dfc279a3aa151264b41cfed47416a06c6",
-  "size_gz": 13477542,
+  "sha256_gz": "c58d0a26ac5e8b7f3f7fa1d6209a635219a063c539576676eb19d47440ada4af",
+  "sha256_bin": "6be8cc21eb9f71741ef3b015ecf190b825d259222dea887e05a8d27b70de7e08",
+  "size_gz": 13478521,
   "size_bin": 40321208
 }
