@@ -7,8 +7,8 @@ proves the result actually works.
 
 | | |
 |---|---|
-| **Version** | `0adf8ef` |
-| **Built** | `2026-09-09T15:53:31Z` from `0adf8ef` |
+| **Version** | `3af6874` |
+| **Built** | `2026-09-12T12:02:35Z` from `3af6874` |
 | **Platform** | linux/amd64 |
 | **Download** | [`athinex-linux-amd64.gz`](athinex-linux-amd64.gz) (12.9 MB, 38.5 MB unpacked) |
 
@@ -35,8 +35,8 @@ sudo install -m 0755 athinex-linux-amd64 /usr/local/bin/athinex
 Checksums for this release:
 
 ```
-e6a7b046e98c9b804ab2a1af867a506a6d4ce1c13c3dacd4ab2f4d715de8392c  athinex-linux-amd64.gz
-c27b7afd919325d5a1199a9995441128d08098b975f5fc7304c17fc37abf5e84  athinex-linux-amd64
+c0d95c02d473c3bba9e544db90cb5f01522e7bb4f479b6d0f49f8d7ed6ce8f15  athinex-linux-amd64.gz
+6d4e54544bb7db6c73bed71a5922abfa962c4dfee93055df4a76212d7296f246  athinex-linux-amd64
 ```
 
 </details>
@@ -138,16 +138,16 @@ account, then caches them in `/etc/athinex/state.json` (mode 0600) so a retry
 after a failure does not ask again. Every step checks its own postcondition, so
 re-running after an interruption resumes rather than starting over.
 
-### Optional add-ons
+### Integrated assessment and optional monitoring
 
 ```sh
 sudo athinex installer install --mode domain --host athinex.example.com \
-  --with-assessment \
   --with-monitoring
 ```
 
-The assessment add-on provides deep network and host checks and needs about
-4 GB extra RAM and 15 GB disk. Monitoring adds metrics and dashboards.
+The assessment scanner is installed automatically and provides deep network and
+host checks; budget about 4 GB RAM and 15 GB disk for it. Monitoring remains an
+optional add-on that adds metrics and dashboards.
 
 ### Unattended install
 
@@ -189,6 +189,12 @@ If an update fails or is interrupted, re-run the same command (including options
 such as `--keep-edits`). Unfinished actions are retried automatically, and the
 update is only complete after configuration and health checks succeed. Even an
 update with no changes checks health before reporting that it is up to date.
+After a successful image update, superseded Athinex image IDs are removed to
+reclaim disk space. Cleanup is exact and non-forced: unrelated images and any
+image still used by another container remain untouched. The cleanup section
+lists each old container and image that was removed, and identifies any image
+Docker retained because it is still in use.
+
 To reapply services and extract the host binary after a failure from an older
 installer that did not record unfinished actions, run
 `sudo athinex installer update --keep-edits --restart-all`.
