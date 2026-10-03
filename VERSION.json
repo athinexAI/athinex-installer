@@ -1,0 +1,14 @@
+{
+  "version": "beta-bf5a638",
+  "commit": "bf5a638",
+  "product_commits": {"asm":"d76838e3e49d6bee8faa28e29e8660cbf1f31a89","assessment":"dd0a291b0746b463053f94fb0c5ecec8e354585a","pentesting":"009a843ae0d7ea6d51452620a3703b2c122ba547","supplychain":"c9d3cf2bb3af4e5ddfc45d1fcebe61503851efaa"},
+  "built_at": "2026-10-03T11:10:38Z",
+  "go_version": "go1.25.7",
+  "os": "linux",
+  "arch": "amd64",
+  "asset": "athinex-linux-amd64.gz",
+  "sha256_gz": "b83f2024477e8659b11a40f1ec3044850eb273673fe3fd8a1ae9417c869978a7",
+  "sha256_bin": "408c2379277c9a03357174ebd88eac39bdbd7ac40627fd49839f907967f0a54d",
+  "size_gz": 13938313,
+  "size_bin": 41611448
+}
