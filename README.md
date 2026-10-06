@@ -7,10 +7,10 @@ proves the result actually works.
 
 | | |
 |---|---|
-| **Version** | `beta-855bcfb` |
-| **Built** | `2026-10-04T10:28:13Z` from `855bcfb` |
+| **Version** | `beta-f66bfe1` |
+| **Built** | `2026-10-06T12:44:25Z` from `f66bfe1` |
 | **Platform** | linux/amd64 |
-| **Download** | [`athinex-linux-amd64.gz`](athinex-linux-amd64.gz) (12.4 MB, 37.0 MB unpacked) |
+| **Download** | [`athinex-linux-amd64.gz`](athinex-linux-amd64.gz) (12.5 MB, 37.2 MB unpacked) |
 
 > **Beta channel, for testing only.** This build accepts licenses from the test licensing service: pass `--license-guard-url https://license-dev.athinex.net` to `installer install`. Customers install from the [main branch](https://github.com/athinexAI/athinex-installer).
 
@@ -44,8 +44,8 @@ sudo install -m 0755 athinex-linux-amd64 /usr/local/bin/athinex
 Checksums for this release:
 
 ```
-b805963bfdef7e4fc2af08da5e625ad7f01937afae041d0534cebf03e7f638d0  athinex-linux-amd64.gz
-de77d25f6042d44f8a2de3af5f1049db66ece641a03a9d2f19d78b1a9f550ece  athinex-linux-amd64
+b94c1df6b5e146e5907569210264d86250fc98aed1788d41e811dd1e2c2ef72f  athinex-linux-amd64.gz
+400de6ecaeaaee31114ed7111d55592327e8269cf4674d1b06a88b9873bc9199  athinex-linux-amd64
 ```
 
 </details>
@@ -128,8 +128,10 @@ sudo athinex installer health
 - **Size**: 4 vCPU / 6 GB RAM (32 GB recommended) / 60 GB disk. The
   vulnerability assessment product adds ~4 GB RAM and ~15 GB disk for its
   scanner; monitoring adds ~500 MB disk.
-- **Network**: outbound HTTPS to apt repositories, Docker Hub and the Athinex
-  licensing service, for both install and update. Ports 80 and 443 must be free
+- **Network**: outbound HTTPS to apt repositories, the Athinex registry
+  (`registry.athinex.net`), Docker Hub and its CDN, and the Athinex licensing
+  service, for both install and update. The Athinex images are pulled with
+  your license: no registry account or token is needed. Ports 80 and 443 must be free
   wherever there is a certificate; ports 3000 and 8000 for a deployment with no
   TLS. Only a Let's Encrypt certificate additionally needs 80/443 reachable
   *from the internet*, with the domain's `A` record already pointing at this host.
