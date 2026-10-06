@@ -1,14 +1,14 @@
 {
-  "version": "v2.0.1",
-  "commit": "7c30e5e",
-  "product_commits": {"asm":"d76838e3e49d6bee8faa28e29e8660cbf1f31a89","assessment":"dd0a291b0746b463053f94fb0c5ecec8e354585a","pentesting":"009a843ae0d7ea6d51452620a3703b2c122ba547","supplychain":"c9d3cf2bb3af4e5ddfc45d1fcebe61503851efaa"},
-  "built_at": "2026-10-03T10:56:45Z",
+  "version": "v2.1.0",
+  "commit": "f66bfe1",
+  "product_commits": {"asm":"e9a89f759487f473cfe2d45a4570014b562fd1c3","assessment":"2cc5a2b52fa5280047200f4e4ac79eabe0e70bc2","pentesting":"8344c4d97bf5ad272dab21afce336fbfb2cd5855","supplychain":"219cfb7d537e1186a843ed0234e9857d6a74cd3d"},
+  "built_at": "2026-10-06T12:50:07Z",
   "go_version": "go1.25.7",
   "os": "linux",
   "arch": "amd64",
   "asset": "athinex-linux-amd64.gz",
-  "sha256_gz": "cb68d478b784aa98800b74352bfa8737100a0993b46e0a89b9188f1991557a7c",
-  "sha256_bin": "ce3908dd79a2282edee9baf38b9213895349fc69265839128958e0f60fa986cf",
-  "size_gz": 13938069,
-  "size_bin": 41611448
+  "sha256_gz": "e9b3f596b08c8897870587d5552b74c68c17a01389a4ecf461d7a81d71939916",
+  "sha256_bin": "205b1fd876b6a321ce182557ba8adac62c9d2f5548fe567444e7339c11d3be2e",
+  "size_gz": 13060328,
+  "size_bin": 38985912
 }
