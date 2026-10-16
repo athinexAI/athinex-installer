@@ -7,10 +7,10 @@ proves the result actually works.
 
 | | |
 |---|---|
-| **Version** | `v1.5.0` |
-| **Built** | `2026-10-06T14:29:45Z` from `2b12065` |
+| **Version** | `v2.1.2` |
+| **Built** | `2026-10-16T12:34:03Z` from `1083bbe` |
 | **Platform** | linux/amd64 |
-| **Download** | [`athinex-linux-amd64.gz`](athinex-linux-amd64.gz) (12.5 MB, 37.2 MB unpacked) |
+| **Download** | [`athinex-linux-amd64.gz`](athinex-linux-amd64.gz) (12.5 MB, 37.3 MB unpacked) |
 
 
 
@@ -44,8 +44,8 @@ sudo install -m 0755 athinex-linux-amd64 /usr/local/bin/athinex
 Checksums for this release:
 
 ```
-7012100b4a201c3d589cdc3e9c02efdd46aab4aa3eadc0abf82da59188125af1  athinex-linux-amd64.gz
-5147f67c299e81f4143b7fee43f07b28d8596931de0d554d2023db8febc4737c  athinex-linux-amd64
+84fc0de056a1f1378ae9731ad767f4df29f4f404a600f30dd5e3665121a53c81  athinex-linux-amd64.gz
+2db69a4904ae1bc5cd864c3a461173c22aa45771069277a52e5f3e8b212c06e8  athinex-linux-amd64
 ```
 
 </details>
@@ -252,6 +252,12 @@ sudo athinex installer reset               # DELETE all Athinex data, ready to r
 sudo athinex installer refresh-templates   # refresh the vulnerability scan templates
 athinex installer maintenance              # print the maintenance units to add
 ```
+
+Health includes an optional DNS wordlist check for `dns-wordlist.txt` in the
+configured feeds directory. Missing, empty or unreadable files produce a warning
+and do not block normal installation or health checks. The wordlist is downloaded
+on demand for DNS brute-force scans; health never downloads it. As with other
+warnings, an explicitly requested `--strict` health check treats it as an error.
 
 `update` compares the rendered configuration against what it last wrote, and the
 local images against what it last deployed, then restarts only what those
