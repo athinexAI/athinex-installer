@@ -7,10 +7,10 @@ proves the result actually works.
 
 | | |
 |---|---|
-| **Version** | `v2.1.3` |
-| **Built** | `2026-10-16T17:38:26Z` from `f1ffc1a` |
+| **Version** | `v2.1.17` |
+| **Built** | `2026-10-30T16:51:12Z` from `756fc6f` |
 | **Platform** | linux/amd64 |
-| **Download** | [`athinex-linux-amd64.gz`](athinex-linux-amd64.gz) (12.5 MB, 37.3 MB unpacked) |
+| **Download** | [`athinex-linux-amd64.gz`](athinex-linux-amd64.gz) (12.6 MB, 37.7 MB unpacked) |
 
 
 
@@ -44,8 +44,8 @@ sudo install -m 0755 athinex-linux-amd64 /usr/local/bin/athinex
 Checksums for this release:
 
 ```
-06ad919ac4a873cacaec764c3883c168d41ac1c1f005a8185f11cd15578bfdf7  athinex-linux-amd64.gz
-1ea66348eab12401e209878070eaaef15fe66072878afba72b4fe86413cb892d  athinex-linux-amd64
+2d5a1854acc933c950b5fd6e6d594520114279e20b8ece7d3ea62afeacc16196  athinex-linux-amd64.gz
+2632a30c32fb7e42fae889117a2ebe0078145ebee4bf18d90050c60372d9659a  athinex-linux-amd64
 ```
 
 </details>
@@ -110,8 +110,10 @@ The installer then asks for:
 It checks the host, shows the plan and waits for your confirmation before it
 changes anything. Add `--dry-run` to see the plan without changing anything.
 
-The installer caches your answers in `/etc/athinex/state.json` (mode 0600) so a retry
-after a failure does not ask again. Every step checks its own postcondition, so
+The installer caches validated answers in `/etc/athinex/state.json` (mode 0600)
+before preflight so a retry after a failed host check does not ask again. It
+retains the pending admin password only until account creation succeeds; dry
+runs never save answers. Every step checks its own postcondition, so
 re-running after an interruption resumes rather than starting over.
 
 When it finishes, open `https://<host>` (or `http://<host>:3000` with
@@ -334,3 +336,20 @@ produces the same bytes.
 ---
 
 Athinex — <https://athinex.net>
+
+
+## Remote supply chain server
+
+Use this same Athinex CLI on a remote Linux amd64 host:
+
+```sh
+sudo athinex installer remote-scanner --url https://scanner.example.com:9443 --token '<API key from Athinex>'
+```
+
+It provisions only the remote scanner service. The service runs
+`athinex supplychain-server` and exposes an authenticated HTTPS API that the
+Athinex app calls. The default installation prints a public CA certificate to
+paste into the app's server connection settings. Use `--tls-cert` and `--tls-key`
+for an existing trusted certificate, and `--kubeconfig` for Kubernetes access.
+Run `athinex installer remote-scanner --help` for all flags. No separate installer
+or scanner executable is required.
