@@ -7,8 +7,8 @@ proves the result actually works.
 
 | | |
 |---|---|
-| **Version** | `v2.2.22` |
-| **Built** | `2026-11-22T10:17:57Z` from `bc5395a` |
+| **Version** | `v2.2.23` |
+| **Built** | `2026-11-22T19:14:19Z` from `194e12e` |
 | **Platform** | linux/amd64 |
 | **Download** | [`athinex-linux-amd64.gz`](athinex-linux-amd64.gz) (13.2 MB, 38.6 MB unpacked) |
 
@@ -44,8 +44,8 @@ sudo install -m 0755 athinex-linux-amd64 /usr/local/bin/athinex
 Checksums for this release:
 
 ```
-d3a3ca2349bdc6ee97b81cfaa119294c8733f2ffb04e7aef574295a79052546a  athinex-linux-amd64.gz
-c5fbb509f882d53c098e7de4ba346d4328a90b797e6d74374ce896d6022ee715  athinex-linux-amd64
+0477e292d3d4bfb882e2aa42b6253d45022cb05deb8419cca41b8d51104605c0  athinex-linux-amd64.gz
+989e979668075a7bb64bfcbac9405adda6a22edbabd8a321eeec236de5f4c19b  athinex-linux-amd64
 ```
 
 </details>
