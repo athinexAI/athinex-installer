@@ -7,8 +7,8 @@ proves the result actually works.
 
 | | |
 |---|---|
-| **Version** | `v2.2.24` |
-| **Built** | `2026-11-22T23:00:18Z` from `a311979` |
+| **Version** | `v2.2.26` |
+| **Built** | `2026-11-25T03:06:29Z` from `a478b7b` |
 | **Platform** | linux/amd64 |
 | **Download** | [`athinex-linux-amd64.gz`](athinex-linux-amd64.gz) (13.2 MB, 38.6 MB unpacked) |
 
@@ -44,8 +44,8 @@ sudo install -m 0755 athinex-linux-amd64 /usr/local/bin/athinex
 Checksums for this release:
 
 ```
-ced421f7f2576aba92aed08aa0c2834b1c91e88673bf1064fd9aaaad80435081  athinex-linux-amd64.gz
-8d5aae32d531d09028267b06e4cb24d501e81613606e04a815ffc3656102eb99  athinex-linux-amd64
+011c7be42966ee9e0980f5feccc866184326415c8522f8ee9d7102e626ebe9e1  athinex-linux-amd64.gz
+9caf11febde909fd280c3a0474c79156958136cfb897ed3389f5f0a533999eba  athinex-linux-amd64
 ```
 
 </details>
@@ -264,6 +264,14 @@ warnings, an explicitly requested `--strict` health check treats it as an error.
 `update` compares the rendered configuration against what it last wrote, and the
 local images against what it last deployed, then restarts only what those
 changes require.
+
+Install and update also keep `/usr/local/bin/athinex` linked to the deployed
+binary in `<install-dir>/bin/athinex`, so `sudo athinex` uses the same release
+as the API service. An existing bootstrap executable is backed up as
+`/usr/local/bin/athinex.bak.<timestamp>` before replacement. Updates repair a
+missing or stale command even when no images changed, and finish configuration
+and health checks with the deployed binary. Reset and purge preserve a
+standalone installer command for the next installation.
 
 If an update fails or is interrupted, re-run the same command (including options
 such as `--keep-edits`). Unfinished actions are retried automatically, and the
